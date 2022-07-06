@@ -1,0 +1,3 @@
+- [ ] Flip horizontal
+- [ ] Flip vertical
+- [ ] Export spritesheet?

@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  display: flex;
+  font-size: 12pt;
+  user-select: none;
+}
+
+a {
+  color: black;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  width: 250px;
+  max-height: 100vh;
+  box-sizing: content-box;
+}
+
+.editor {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.editor canvas {
+  display: block;
+  image-rendering: pixelated;
+  width: 250px;
+  height: 250px;
+  border: solid 2px;
+}
+
+.editor input {
+  width: 250px;
+  border: solid 2px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 18pt;
+  border-top: 0;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  background: white;
+  border: solid 2px;
+  border-bottom: solid 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.editor .actions {
+  display: flex;
+  margin-top: 4px;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.sprites {
+  padding: 12px;
+  flex: 1 1;
+}
+
+.sprites-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 12px;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.sprites img {
+  width: 25px;
+  height: 25px;
+  image-rendering: pixelated;
+}
+
+.sprite-group-title {
+  font-weight: bold;
+  background: white;
+  border-bottom: solid 2px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.gh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sprites .active img {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: auto;
+    text-align: center;
+  }
+}
+
+table {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  padding: 2px 0;
+}
