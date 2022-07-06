@@ -33,6 +33,7 @@ a {
   width: 250px;
   height: 250px;
   border: solid 2px;
+  touch-action: none;
 }
 
 .editor input {
