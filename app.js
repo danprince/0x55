@@ -19,6 +19,7 @@ function init() {
     initialSprites,
     randomSprites: generateRandomSprites(100),
     mode: "idle",
+    showExports: true,
   };
 }
 
@@ -305,4 +306,49 @@ function setFavicon(sprite) {
   let svg = toSVG(sprite);
   let url = `data:image/svg+xml;base64,${btoa(svg)}`;
   link.setAttribute("href", url);
+}
+
+/**
+ * @param {number} sprite
+ */
+function toDataURL(sprite) {
+  let canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  render(canvas, sprite);
+  return canvas.toDataURL();
+}
+
+/**
+ * @param {number} sprite
+ */
+function savePNG(sprite) {
+  let url = toDataURL(sprite);
+  let name = `${encode(sprite)}.png`;
+  download(name, url);
+}
+
+/**
+ * @param {number} sprite
+ */
+function saveSVG(sprite) {
+  let svg = toSVG(sprite);
+  let blob = new Blob([svg], { type: "text/svg" });
+  let url = URL.createObjectURL(blob);
+  let name = `${encode(sprite)}.svg`;
+  download(name, url);
+  URL.revokeObjectURL(url);
+}
+
+/**
+ * @param {string} fileName
+ * @param {string} url
+ */
+function download(fileName, url) {
+  let a = document.createElement("a");
+  a.download = fileName;
+  a.href = url;
+  document.body.append(a);
+  a.click();
+  a.remove();
 }

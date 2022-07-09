@@ -128,6 +128,22 @@ td {
   padding: 2px 0;
 }
 
+.exports {
+  margin: 1em 0;
+}
+
+.export-group input, textarea {
+  font: inherit;
+  border: solid 2px;
+  padding: 4px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.exports label {
+  font-weight: bold;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: black;

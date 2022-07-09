@@ -21,6 +21,7 @@
     @clear="sprite = 0"
     @random="sprite = random()"
     @paint="sprite = paint($event.detail, sprite, mode)"
+    @export="showExports = !showExports"
     @keydown.window.meta.s.prevent="$dispatch('save')"
     @keydown.window.shift.n="$dispatch('new')"
     @keydown.window.backspace="$dispatch('clear')"
@@ -28,7 +29,7 @@
     @keydown.window.shift.i="sprite = invert(sprite)"
     @keydown.window.shift.h="sprite = flip(sprite, true)"
     @keydown.window.shift.v="sprite = flip(sprite, false)"
-    @keydown.window.meta.c="navigator.clipboard.writeText(encode(sprite))"
+    @keydown.window.meta.c="document.hasFocus() || navigator.clipboard.writeText(encode(sprite))"
     @paste.window="sprite = decode($event.clipboardData.getData('text/plain'))"
   >
     <div class="sidebar">
@@ -55,10 +56,51 @@
         <div class="actions">
           <button @click="$dispatch('new')">new</button>
           <button @click="$dispatch('clear')">clear</button>
-          <button @click="$dispatch('random')">random</button>
           <button @click="$dispatch('save')">save</button>
+          <button @click="$dispatch('export')">export</button>
         </div>
       </header>
+      <div class="exports" x-show="showExports">
+        <div class="export-group">
+          <label for="dec">decimal</label>
+          <input id="dec" type="string" readonly :value="sprite.toString(10)" @focus="$el.select()" />
+        </div>
+        <div class="export-group">
+          <label for="oct">octal</label>
+          <input id="oct" type="string" readonly :value="sprite.toString(8)" @focus="$el.select()" />
+        </div>
+        <div class="export-group">
+          <label for="hex">hex</label>
+          <input id="hex" type="string" readonly :value="sprite.toString(16).toUpperCase()" @focus="$el.select()" />
+        </div>
+        <div class="export-group">
+          <label for="bin">binary</label>
+          <input id="bin" type="string" readonly :value="sprite.toString(2)" @focus="$el.select()" />
+        </div>
+        <div class="export-group" x-data="{ url: toDataUrl(sprite) }">
+          <label for="dataurl">
+            data url
+            (<span x-text="url.length"></span> chars)
+          </label>
+          <textarea id="dataurl" readonly x-text="url" @focus="$el.select()"></textarea>
+        </div>
+        <div class="export-group" x-data="{ svg: toSVG(sprite) }">
+          <label for="svg">
+            svg
+            (<span x-text="svg.length"></span> chars)
+          </label>
+          <textarea id="svg" readonly x-text="svg" @focus="$el.select()"></textarea>
+        </div>
+        <label>download</label>
+        <div class="actions">
+          <button @click="savePNG(sprite)">
+            PNG
+          </button>
+          <button @click="saveSVG(sprite)">
+            SVG
+          </button>
+        </div>
+      </div>
       <footer>
         <p>
           <strong>0x55</strong> is an image editor for 5x5 binary sprites.
