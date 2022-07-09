@@ -293,8 +293,8 @@ function toSVG(sprite) {
     }
   }
 
-  let color = isDarkMode ? "white" : "black";
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 5" shape-rendering="crispEdges" fill="${color}"><path d="${path.join("")}"/></svg>`;
+  let fill = isDarkMode ? ` fill="white"` : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 5" shape-rendering="crispEdges"${fill}><path d="${path.join("")}"/></svg>`;
 }
 
 /**
