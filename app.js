@@ -360,3 +360,22 @@ function copyToClipboard(text) {
     navigator.clipboard.writeText(text);
   }
 }
+
+/**
+ * @param {number[]} sprites
+ * @param {number} editing
+ * @param {number} by
+ * @returns {number}
+ */
+function jump(sprites, editing, by) {
+  let index = sprites.indexOf(editing);
+
+  if (index >= 0 && sprites.length > 0) {
+    let newIndex = index + by;
+    if (newIndex < 0) newIndex = sprites.length + newIndex;
+    newIndex = newIndex % sprites.length;
+    return sprites[newIndex];
+  } else {
+    return editing;
+  }
+}

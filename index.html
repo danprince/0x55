@@ -25,6 +25,8 @@
     @keydown.window.meta.s.prevent="$dispatch('save')"
     @keydown.window.shift.n="$dispatch('new')"
     @keydown.window.backspace="$dispatch('clear')"
+    @keydown.window.left="sprite = editing = jump(sprites, editing, -1)"
+    @keydown.window.right="sprite = editing = jump(sprites, editing, +1)"
     @keydown.window.shift.d="$dispatch('clear'); $dispatch('save')"
     @keydown.window.shift.i="sprite = invert(sprite)"
     @keydown.window.shift.h="sprite = flip(sprite, true)"
@@ -115,6 +117,10 @@
         </p>
         <table>
           <tbody>
+            <tr>
+              <th>prev/next</th>
+              <td><kbd>←/→</kbd></td>
+            </tr>
             <tr>
               <th>clear</th>
               <td><kbd>backspace</kbd></td>
