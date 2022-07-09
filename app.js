@@ -148,8 +148,7 @@ function generateRandomSprites(count) {
  * @returns {number}
  */
 function invert(number) {
-  let mask = 2 ** 31 - 1;
-  return ~number & mask;
+  return ~number & 0x1FFFFFF;
 }
 
 /**
