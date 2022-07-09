@@ -13,6 +13,11 @@ a {
   color: inherit;
 }
 
+input, textarea {
+  background: none;
+  color: inherit;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
