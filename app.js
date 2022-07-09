@@ -19,7 +19,7 @@ function init() {
     initialSprites,
     randomSprites: generateRandomSprites(100),
     mode: "idle",
-    showExports: true,
+    showExports: false,
   };
 }
 
