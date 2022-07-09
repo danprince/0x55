@@ -356,7 +356,7 @@ function download(fileName, url) {
  * @param {string} text
  */
 function copyToClipboard(text) {
-  if (document.activeElement === document.body) {
+  if (!["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
     navigator.clipboard.writeText(text);
   }
 }
