@@ -29,7 +29,7 @@
     @keydown.window.shift.i="sprite = invert(sprite)"
     @keydown.window.shift.h="sprite = flip(sprite, true)"
     @keydown.window.shift.v="sprite = flip(sprite, false)"
-    @keydown.window.meta.c="document.hasFocus() || navigator.clipboard.writeText(encode(sprite))"
+    @keydown.window.meta.c="copyToClipboard(encode(sprite))"
     @paste.window="sprite = decode($event.clipboardData.getData('text/plain'))"
   >
     <div class="sidebar">

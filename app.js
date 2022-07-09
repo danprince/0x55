@@ -351,3 +351,12 @@ function download(fileName, url) {
   a.click();
   a.remove();
 }
+
+/**
+ * @param {string} text
+ */
+function copyToClipboard(text) {
+  if (document.activeElement === document.body) {
+    navigator.clipboard.writeText(text);
+  }
+}
