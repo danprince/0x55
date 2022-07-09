@@ -282,19 +282,19 @@ function toDataUrl(sprite) {
  * @returns {string}
  */
 function toSVG(sprite) {
-  let pixels = [];
+  let path = [];
 
   for (let x = 0; x < width; x++) {
     for (let y = 0; y < height; y++) {
       let bit = getBit(sprite, x, y);
       if (bit) {
-        pixels.push(`<rect x="${x}" y="${y}" width="1" height="1"/>`);
+        path.push(`M${x} ${y}h1v1H${x}z`);
       }
     }
   }
 
   let color = isDarkMode ? "white" : "black";
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 5" shape-rendering="crispEdges" fill="${color}">${pixels.join("")}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 5" shape-rendering="crispEdges" fill="${color}"><path d="${path.join("")}"/></svg>`;
 }
 
 /**
