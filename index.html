@@ -62,7 +62,7 @@
           <button @click="$dispatch('export')">export</button>
         </div>
       </header>
-      <div class="exports" x-show="showExports">
+      <div class="exports" x-show="showExports" x-cloak>
         <div class="export-group">
           <label for="dec">decimal</label>
           <input id="dec" type="string" readonly :value="sprite.toString(10)" @focus="$el.select()" />
